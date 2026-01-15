@@ -71,7 +71,7 @@ Switch to english with: ```echo "en" > ~/.stmcli/lang.txt```
 Some information to generate a new package for local deployment
 
 * python3 setup.py bdist_wheel
-* pip3 install stmcli-1.*-py3-none-any.whl --user --upgrade
+* pip3 install dist/stmcli-1.*-py3-none-any.whl --user --upgrade
 * Linux user: the stmcli command is available at $HOME/.local/bin/stmcli
 * Verify installed is available: TBD
 

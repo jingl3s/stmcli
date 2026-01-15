@@ -69,7 +69,7 @@ def load_data(data_file, db_file, stmcli_data_dir):
             values = '(null, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
         elif 'stop_times' in data_file:
             table = 'stop_times'
-            values = '(null, ?, ?, ?, ?, ?)'
+            values = '(null, ?, ?, ?, ?, ?, ?)'
         elif 'calendar.' in data_file:
             table = 'calendar'
             values = '(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'

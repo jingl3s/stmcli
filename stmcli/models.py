@@ -76,6 +76,7 @@ class StopTime(peewee.Model):
     departure_time = peewee.CharField(max_length=8, null=False)
     stop_id = peewee.ForeignKeyField(Stop, null=False)
     stop_sequence = peewee.CharField(null=False)
+    pickup_type = peewee.BooleanField(null=True)
 
     class Meta:
         db_table = 'stop_times'
