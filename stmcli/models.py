@@ -48,6 +48,8 @@ class Route(peewee.Model):
     route_url = peewee.TextField()
     route_color = peewee.CharField(max_length=6)
     route_text_color = peewee.CharField(max_length=6)
+    route_desc = peewee.CharField(max_length=100, null=True)
+    route_desc_detail = peewee.TextField(null=True)
 
     class Meta:
         db_table = 'routes'
@@ -61,10 +63,9 @@ class Trip(peewee.Model):
 
     trip_headsign = peewee.CharField(max_length=50)
     direction_id = peewee.CharField()
-    shape_id = peewee.CharField(max_length=15)
+    shape_id = peewee.CharField(max_length=40)
     wheelchair_accessible = peewee.CharField()
-    note_fr = peewee.CharField(max_length=255)
-    note_en = peewee.CharField(max_length=255)
+    route_pattern_id = peewee.CharField(max_length=40, null=True)
 
     class Meta:
         db_table = 'trips'
@@ -107,3 +108,28 @@ class Calendar(peewee.Model):
 
     class Meta:
         db_table = 'calendar'
+
+
+class Shape(peewee.Model):
+    shape_id = peewee.CharField(max_length=40, null=False)
+    shape_pt_lat = peewee.CharField(null=False)
+    shape_pt_lon = peewee.CharField(null=False)
+    shape_pt_sequence = peewee.IntegerField(null=False)
+    shape_dist_traveled = peewee.CharField(null=True)
+    route_pattern_id = peewee.CharField(max_length=40, null=True)
+
+    class Meta:
+        db_table = 'shapes'
+
+
+class Translation(peewee.Model):
+    table_name = peewee.CharField(max_length=40, null=False)
+    field_name = peewee.CharField(max_length=40, null=False)
+    language = peewee.CharField(max_length=10, null=False)
+    translation = peewee.TextField(null=False)
+    record_id = peewee.CharField(max_length=40, null=True)
+    record_sub_id = peewee.CharField(max_length=40, null=True)
+    field_value = peewee.TextField(null=True)
+
+    class Meta:
+        db_table = 'translations'
