@@ -1,0 +1,42 @@
+name: Build and publish release
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - setup.py
+  workflow_dispatch:
+
+jobs:
+  build_and_release:
+    name: Build wheel and publish GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install the latest version of uv and set the python version to 3.13
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          python-version: 3.13
+
+      - name: Install build dependencies
+        run: |
+          uv sync
+
+      - name: Build wheel
+        run: |
+          uv build
+
+      - name: Publish release with artifact
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: v${{ steps.version.outputs.version }}
+          body: "Release for version v${{ steps.version.outputs.version }}"
+          files: dist/*.whl
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
