@@ -1,5 +1,14 @@
 # stmcli
 
+
+
+> [!WARNING]
+> **This project is no more maintained.**
+> I still use it for a personal project.
+> I integrated it directly in my use case to avoid back and forth.
+
+
+
 The unofficial STM CLI client.
 
 stmcli aims to use the data made available by the [Société de transport de Montréal](http://www.stm.info/)

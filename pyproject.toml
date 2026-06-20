@@ -1,6 +1,6 @@
 [project]
 name = "stmcli"
-version = "1.2.2"
+version = "1.2.3"
 description = "The unofficial STM CLI client."
 readme = "README.md"
 requires-python = ">=3.3"
