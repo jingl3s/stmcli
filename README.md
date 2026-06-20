@@ -1,11 +1,11 @@
-[![Build Status](https://travis-ci.org/stmcli/stmcli.svg?branch=master)](https://travis-ci.org/stmcli/stmcli)
 # stmcli
+
 The unofficial STM CLI client.
 
 stmcli aims to use the data made available by the [Société de transport de Montréal](http://www.stm.info/)
 to create an easy to use command line application to access bus/metro informations.
 
-This tool does not use any information of STM real time. It only retrieve the scheduled times for bus. 
+This tool does not use any information of STM real time. It only retrieve the scheduled times for bus.
 
 ## Installation
 
@@ -38,7 +38,9 @@ optional arguments:
                         yellow, blue and all
   -y, --force-update    Do not ask before updating
 ```
+
 ### Bus
+
 To get the next departures times you need to specify at least -b and -s which are the bus number and the bus stop code.
 
 For example: ``` stmcli -b 150 -s 52150 ```
@@ -54,6 +56,7 @@ For example: ``` stmcli -b 150 -s 52150 -d 20160328 -t 06:30 ```
 Would print almost the same thing as our first example The only exception is that it will print the 10 next departures after 6:30 AM on march 28th 2016.
 
 ### Metro
+
 You can also get the current status of the metro with ```-m```.
 
 For example: ``` stmcli -m green ``` will give you the current status of the green line.
@@ -68,10 +71,16 @@ Switch to french with: ```echo "fr" > ~/.stmcli/lang.txt```
 Switch to english with: ```echo "en" > ~/.stmcli/lang.txt```
 
 ## Developper
+
 Some information to generate a new package for local deployment
 
-* python3 setup.py bdist_wheel
-* pip3 install dist/stmcli-1.*-py3-none-any.whl --user --upgrade
+```shell
+uv sync
+uv build
+```
+
+pip3 install dist/stmcli-1.*-py3-none-any.whl --user --upgrade
+
 * Linux user: the stmcli command is available at $HOME/.local/bin/stmcli
 * Verify installed is available: TBD
 
@@ -79,4 +88,4 @@ Some information to generate a new package for local deployment
 
 By default, the database is createdin ~/.stmcli/stm.db as sqlite format.
 
-Useful tool will be sqlitebrowser https://github.com/sqlitebrowser/sqlitebrowser
+Useful tool will be sqlitebrowser <https://github.com/sqlitebrowser/sqlitebrowser>

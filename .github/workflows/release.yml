@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - setup.py
+      - pyproject.toml
   workflow_dispatch:
 
 jobs:
@@ -26,6 +27,12 @@ jobs:
       - name: Install build dependencies
         run: |
           uv sync
+
+      - name: Get version from uv
+        id: version
+        run: |
+          version=$(uv version | awk '{print $NF}')
+          echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: Build wheel
         run: |
